@@ -36,13 +36,11 @@ export class NovoPedidoComponent implements OnInit {
   }
 
   public salvar(): void {
-    this.produtoService
-      .buscarProdutosPorId(this.form.get('product')?.value)
-      .pipe(take(1))
-      .subscribe((dados: IProduto) => {
-        this.produto = dados;
-      });
-
+    this.produtos.forEach(element => {
+      if(element.id === this.form.get('product')?.value){
+        this.produto = element;
+      }
+    });
     const novoPedido: IPedido = {
       id: 0,
       customerCpf: this.form.get('customerCpf')?.value,
