@@ -34,7 +34,8 @@ export class EditarProdutoComponent implements OnInit {
       this.id = params['id'];
     });
 
-    this.service.buscarProdutosPorId(this.id)
+    this.service
+      .buscarProdutosPorId(this.id)
       .pipe(take(1))
       .subscribe((dados: IProduto) => {
         this.produto = dados;
@@ -48,7 +49,7 @@ export class EditarProdutoComponent implements OnInit {
         price: this.form.get('price')?.value,
         expirationDate: this.form.get('expirationDate')?.value,
         quantityInStock: this.produto.quantityInStock,
-        active: this.produto.active
+        active: this.produto.active,
       };
 
       this.service
@@ -57,7 +58,7 @@ export class EditarProdutoComponent implements OnInit {
         .subscribe(() => {
           alert('Produto alterado com sucesso!');
         });
-        this.router.navigate(['/produto/gerenciar']);
+      this.router.navigate(['/produto/gerenciar']);
     }
   }
 

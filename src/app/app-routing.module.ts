@@ -4,8 +4,10 @@ import { combineLatest } from 'rxjs';
 import { EditarClienteComponent } from './features/cliente/editar-cliente/editar-cliente.component';
 import { GerenciarClienteComponent } from './features/cliente/gerenciar-cliente/gerenciar-cliente.component';
 import { NovoClienteComponent } from './features/cliente/novo-cliente/novo-cliente.component';
+import { AcompanharPedidoComponent } from './features/pedido/acompanhar-pedido/acompanhar-pedido.component';
 import { GerenciarPedidoComponent } from './features/pedido/gerenciar-pedido/gerenciar-pedido.component';
 import { NovoPedidoComponent } from './features/pedido/novo-pedido/novo-pedido.component';
+import { StatusPedidoComponent } from './features/pedido/status-pedido/status-pedido.component';
 import { EditarProdutoComponent } from './features/produto/editar-produto/editar-produto.component';
 import { GerenciarEstoqueComponent } from './features/produto/gerenciar-estoque/gerenciar-estoque.component';
 import { GerenciarProdutoComponent } from './features/produto/gerenciar-produto/gerenciar-produto.component';
@@ -60,7 +62,15 @@ const routes: Routes = [
     {
       path: 'gerenciar',
       component: GerenciarPedidoComponent
-    }
+    },
+    {
+      path: 'status/:id',
+      component: StatusPedidoComponent
+    },
+    {
+      path: 'acompanhar/:id',
+      component: AcompanharPedidoComponent
+    },
   ]
 }];
 

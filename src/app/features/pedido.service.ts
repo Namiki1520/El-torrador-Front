@@ -18,4 +18,16 @@ export class PedidoService {
   public buscarPedidos(): Observable<IPedido[]> {
     return this.httpClient.get<IPedido[]>(`${this.api}/order`);
   }
+
+  public deletarPedido(id: number): Observable<boolean> {
+    return this.httpClient.delete<boolean>(`${this.api}/order/${id}` );
+  }
+
+  public buscarPedidoPorId(id:number): Observable<IPedido> {
+    return this.httpClient.get<IPedido>(`${this.api}/order/${id}`);
+  }
+
+  public alterarStatus(pedido: IPedido): Observable<boolean> {
+    return this.httpClient.patch<boolean>(`${this.api}/order?id=${pedido.id}&status=${pedido.currentStatus}`,pedido.id);
+  }
 }

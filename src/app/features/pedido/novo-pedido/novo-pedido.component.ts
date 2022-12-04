@@ -34,6 +34,7 @@ export class NovoPedidoComponent implements OnInit {
         this.produtos = dados;
       });
   }
+
   public salvar(): void {
     this.produtoService
       .buscarProdutosPorId(this.form.get('product')?.value)
@@ -46,14 +47,7 @@ export class NovoPedidoComponent implements OnInit {
       id: 0,
       customerCpf: this.form.get('customerCpf')?.value,
       customerName: '',
-      product: {
-        id: this.produto.id,
-        description: this.produto.description,
-        price: this.produto.price,
-        quantityInStock: this.produto.quantityInStock,
-        expirationDate: this.produto.expirationDate,
-        active: this.produto.active,
-      },
+      product: this.produto,
       quantity: this.form.get('quantity')?.value,
       orderValue: 0,
       requestDate: new Date(),

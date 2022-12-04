@@ -18,13 +18,13 @@
             <td>{{pedido.orderValue | currency: 'BRL'}}</td>
             <td [ngSwitch]="pedido.currentStatus">
                 <span *ngSwitchCase="0">Em andamento</span>
-                <span *ngSwitchCase="2">Em transito</span>
-                <span *ngSwitchCase="3">Finalizado</span>
+                <span *ngSwitchCase="1">Em transito</span>
+                <span *ngSwitchCase="2">Finalizado</span>
             </td>
             <td class="d-flex ">
-                <button class="btn btn-danger m-2"  >✖</button>
-                <button class="btn btn-warning m-2" >📦</button>
-                <button class="btn btn-success m-2" >🖊</button>
+                <button class="btn btn-danger m-2" (click)="deletar(pedido.id)" >✖</button>
+                <button class="btn btn-warning m-2" (click)="alterarStatus(pedido.id)" >🖊</button>
+                <button class="btn btn-success m-2" (click)="acompanhar(pedido.id)">🛵</button>
             </td>
         </tr>
     </tbody>

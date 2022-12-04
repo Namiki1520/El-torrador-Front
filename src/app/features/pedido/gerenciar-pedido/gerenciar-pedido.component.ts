@@ -21,21 +21,27 @@ export class GerenciarPedidoComponent implements OnInit {
       .pipe(take(1))
       .subscribe((dados: IPedido[]) => {
         this.pedidos = dados;
-        console.table(this.pedidos)
       });
   }
 
-  // public editar(id: number) {
-  //   this.router.navigate(['/cliente/editar', id]);
-  // }
+  public alterarStatus(id: number) {
+    this.router.navigate(['/pedido/status', id]);
+  }
 
-  // public deletar(cpfCLiente: string) {
-  //   this.clienteService
-  //     .deleteCliente(cpfCLiente)
-  //     .pipe(take(1))
-  //     .subscribe(() => {
-  //       alert(`O cliente com CPF: ${cpfCLiente} foi deletado com sucesso!`);
-  //     });
-  // }
+  public acompanhar(id: number) {
+    this.router.navigate(['/pedido/acompanhar', id]);
+  }
+
+  public deletar(id: number) {
+    if (confirm(`Você deseja deletar o pedido ${id}?`)) {
+      this.pedidoService
+        .deletarPedido(id)
+        .pipe(take(1))
+        .subscribe(() => {
+          alert(`O pedido ${id} foi ativado!`);
+        });
+    }
+    location.reload();
+  }
 }
 

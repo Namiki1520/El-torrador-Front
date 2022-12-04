@@ -1,0 +1,26 @@
+<h2>Status Pedido</h2>
+<br>
+<div class="row">
+    <div class="col">
+        <p>Pedido: {{pedido.id}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <p>Status atual: {{pedido.currentStatus}}</p>
+    </div>
+</div>
+<br>
+<form [formGroup]="form" (ngSubmit)="alterarStatus()">
+    <div class="form-group">
+        <label for="currentStatus" class="control-label">Status</label>
+        <select class="form-select" id="currentStatus" formControlName="currentStatus">
+            <option value="0">Em andamento</option>
+            <option value="1">Em transito</option>
+            <option value="2">Finalizado</option>
+        </select>
+    </div>
+    <br>
+    <input type="submit" value="Salvar" class="btn btn-primary" />
+    <br>
+</form>

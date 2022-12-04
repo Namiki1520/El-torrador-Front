@@ -4,15 +4,9 @@ export interface IPedido {
   id: number;
   customerCpf: string;
   customerName: string
-  product?: IProduto;
+  product: IProduto;
   quantity: number;
   orderValue: number;
   requestDate: Date;
   currentStatus: number;
-}
-
-enum Status{
-  EmProgresso = 'Em progresso',
-  EmTransito= 'Em transito',
-  Finalizado = 'Finalizado'
 }

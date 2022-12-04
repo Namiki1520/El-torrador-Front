@@ -17,6 +17,8 @@ import { EditarProdutoComponent } from './features/produto/editar-produto/editar
 import { GerenciarPedidoComponent } from './features/pedido/gerenciar-pedido/gerenciar-pedido.component';
 import { NovoPedidoComponent } from './features/pedido/novo-pedido/novo-pedido.component';
 import { PedidoService } from './features/pedido.service';
+import { StatusPedidoComponent } from './features/pedido/status-pedido/status-pedido.component';
+import { AcompanharPedidoComponent } from './features/pedido/acompanhar-pedido/acompanhar-pedido.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { PedidoService } from './features/pedido.service';
     EditarProdutoComponent,
     GerenciarPedidoComponent,
     NovoPedidoComponent,
+    StatusPedidoComponent,
+    AcompanharPedidoComponent,
   ],
   imports: [
     BrowserModule,
