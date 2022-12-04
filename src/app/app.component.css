@@ -1,0 +1,38 @@
+.toolbar {
+  position: absolute;
+  top: 0;
+  font-size: 25px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  border: 0.1rem solid rgba(18, 18, 17, 0.163);
+  align-items: center;
+  background-color: #d7d716d6;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+}
+.nome{
+  top: 0;
+  font-size: 25px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #ffffffd6;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+}
+.menu {
+  margin-top: 60px;
+  
+}
+
+.logo {
+  width: 60px;
+}
+
+.menudrop{
+  background-color: #d7d716d6;
+}

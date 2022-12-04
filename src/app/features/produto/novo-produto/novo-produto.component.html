@@ -1,0 +1,34 @@
+<h2>Novo Produto</h2>
+<form [formGroup]="form" (ngSubmit)="salvar()">
+    <br>
+    <div class="form-group">
+        <label for="descricao" class="form-label">Descrição</label>
+        <input id="descricao" formControlName="descricao" type="text" class="form-control" autocomplete="off" [ngClass]="{
+         'valid': form.get('descricao')?.valid && !form.get('descricao')?.pristine,
+         'invalid': form.get('descricao')?.invalid && !form.get('descricao')?.pristine}">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="preco" class="form-label">Preço</label>
+        <input id="preco" formControlName="preco" type="text" class="form-control" autocomplete="off" [ngClass]="{ 
+            'valid':  form.get('preco')?.valid && !form.get('preco')?.pristine,
+            'invalid': form.get('preco')?.invalid && !form.get('preco')?.pristine
+           }">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="dataValidade" class="form-label">Data de Validade</label>
+        <input id="dataValidade" formControlName="dataValidade" type="date" class="form-control" autocomplete="off" [ngClass]="{ 
+            'valid':  form.get('dataValidade')?.valid && !form.get('dataValidade')?.pristine,
+            'invalid': form.get('dataValidade')?.invalid && !form.get('dataValidade')?.pristine
+           }">
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="limpar()">Limpar</button>
+    <input type="submit" value="Salvar" class="btn btn-primary" [disabled]="form.invalid"/> 
+    <br>
+    <div class="alert alert-danger mt-1" *ngIf="form.invalid && !form.pristine">
+        <span *ngIf="form.get('cpf')?.errors?.['required']">O cpf do cliente é obrigatório!<br></span>
+        <span *ngIf="form.get('cpf')?.errors?.['maxlength']">O cpf deve ter no máximo 11 digitos<br></span>
+   </div>
+</form>

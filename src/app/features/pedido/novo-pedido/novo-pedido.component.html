@@ -1,0 +1,25 @@
+<h2>Novo Pedido</h2>
+<form [formGroup]="form" (ngSubmit)="salvar()">
+    <br>
+    <div class="form-group">
+        <label for="customerCpf" class="form-label">CPF do cliente</label>
+        <input id="customerCpf" formControlName="customerCpf" type="text" class="form-control" autocomplete="off">
+    </div>
+    <br>
+    <div class="form-group">
+        <p class="mb-1">Produto</p>
+        <select for="product" class="form-select" formControlName="product">
+            <option *ngFor="let produto of produtos" value="{{produto.id}}">{{produto.description}}</option>
+        </select>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="quantity" class="form-label">Quantidade</label>
+        <input id="quantity" formControlName="quantity" type="number" class="form-control" autocomplete="off"
+            >
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="limpar()">Limpar</button>
+    <input type="submit" value="Salvar" class="btn btn-primary"/>
+    <br>
+</form>

@@ -1,0 +1,34 @@
+<h2>Editar Cliente</h2>
+<form [formGroup]="form" (ngSubmit)="editar()">
+    <br>
+    <div class="form-group">
+        <label for="name" class="custom-label">Nome</label>
+        <input type="text" class="form-control custom-input" formControlName="name" id="name" name="name"
+            [(ngModel)]="cliente.name" autocomplete="off" required [ngClass]="{
+            'valid': form.get('name')?.valid && !form.get('name')?.pristine,
+            'invalid': form.get('nome')?.invalid && !form.get('name')?.pristine}">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="cpf" class="form-label">CPF</label>
+        <input id="cpf" formControlName="cpf" type="text" class="form-control" autocomplete="off"
+            [(ngModel)]="cliente.cpf" [ngClass]="{ 
+            'valid':  form.get('cpf')?.valid && !form.get('cpf')?.pristine,
+            'invalid': form.get('cpf')?.invalid && !form.get('cpf')?.pristine
+           }">
+    </div>
+    <br>
+    <div class="form-group col-md-4">
+        <label for="name" class="custom-label">Data Nascimento</label>
+        <input type="date" class="form-control custom-input" formControlName="birthDate" id="birthDate"
+            name="dataNascimento" [ngModel]="cliente.birthDate| date:'yyyy-MM-dd'" autocomplete="off" required>
+    </div>
+    <br>
+    <button class="btn btn-primary m-1" (click)="limpar()">Limpar</button>
+    <input type="submit" value="Salvar" class="btn btn-primary m-1" [disabled]="form.invalid" />
+    <br>
+    <div class="alert alert-danger mt-1" *ngIf="form.invalid && !form.pristine">
+        <span *ngIf="form.get('cpf')?.errors?.['required']">O cpf do cliente é obrigatório!<br></span>
+        <span *ngIf="form.get('cpf')?.errors?.['maxlength']">O cpf deve ter no máximo 11 digitos<br></span>
+    </div>
+</form>
