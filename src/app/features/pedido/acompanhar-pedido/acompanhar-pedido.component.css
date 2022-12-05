@@ -1,0 +1,36 @@
+h2{
+    text-align: center;
+}
+
+.icone{
+    font-size: 50px;
+    padding-top: 20px;
+    color: #f5b235;    
+}
+
+.card{
+    background-color: var(--secondary-color);
+    color: rgb(27, 27, 27);
+    box-shadow: 5px 8px 5px black;
+}
+
+.progress{
+    border: 1px solid rgb(27, 27, 27);
+    height: 30px;
+}
+
+.andamento{
+    width: 33%;
+}
+
+.transito{
+    width: 66%;
+}
+
+.finalizado{
+    width: 100%;
+}
+
+.acompanhamento{
+    width: 50px;
+}

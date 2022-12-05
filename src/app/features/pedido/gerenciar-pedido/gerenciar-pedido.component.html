@@ -14,7 +14,7 @@
         <tr *ngFor="let pedido of pedidos">
             <td>{{ pedido.id }}</td>
             <td>{{ pedido.customerName }}</td>
-            <td>{{pedido.requestDate | date}}</td>
+            <td>{{pedido.requestDate | date: 'dd/MM/YYYY hh:mm'}}</td>
             <td>{{pedido.orderValue | currency: 'BRL'}}</td>
             <td [ngSwitch]="pedido.currentStatus">
                 <span *ngSwitchCase="0">Em andamento</span>

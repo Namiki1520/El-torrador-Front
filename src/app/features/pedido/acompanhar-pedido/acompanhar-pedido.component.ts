@@ -1,3 +1,4 @@
+import { NgSwitch } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs';
@@ -12,6 +13,7 @@ import { IPedido } from '../pedido.model';
 export class AcompanharPedidoComponent implements OnInit {
   public id = 0;
   public pedido: IPedido = {} as IPedido;
+
   constructor(
     private pedidoService: PedidoService,
     private route: ActivatedRoute
@@ -28,5 +30,24 @@ export class AcompanharPedidoComponent implements OnInit {
       .subscribe((dados: IPedido) => {
         this.pedido = dados;
       });
+    
   }
+
+  public emAndamento(){
+    if (this.pedido.currentStatus === 0) {
+      return 0
+    }
+    else{
+      if (this.pedido.currentStatus === 1) {
+        return 1
+      }
+      else{
+        if (this.pedido.currentStatus === 2){
+          return 2
+        }
+      }
+    }
+    return 0;
+  }
+
 }
