@@ -24,7 +24,7 @@ export class NovoPedidoComponent implements OnInit {
     this.form = new FormGroup({
       customerCpf: new FormControl(null),
       product: new FormControl(null, [Validators.required]),
-      quantity: new FormControl(null, [Validators.required, Validators.min(1)]),
+      quantity: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(this.produto.quantityInStock)]),
     });
 
     this.produtoService
