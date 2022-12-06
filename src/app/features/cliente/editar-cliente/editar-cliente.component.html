@@ -19,9 +19,9 @@
     </div>
     <br>
     <div class="form-group col-md-4">
-        <label for="name" class="custom-label">Data Nascimento</label>
+        <label for="birthDate" class="custom-label">Data Nascimento</label>
         <input type="date" class="form-control custom-input" formControlName="birthDate" id="birthDate"
-            name="dataNascimento" [ngModel]="cliente.birthDate| date:'yyyy-MM-dd'" autocomplete="off" required>
+            name="birthDate" [ngModel]="cliente.birthDate| date:'yyyy-MM-dd'" autocomplete="off" required>
     </div>
     <br>
     <button class="btn btn-primary m-1" (click)="limpar()">Limpar</button>
