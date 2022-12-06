@@ -6,8 +6,10 @@
     </div>
 </div>
 <div class="row">
-    <div class="col">
-        <p>Status atual: {{pedido.currentStatus}}</p>
+    <div class="col" [ngSwitch]="pedido.currentStatus">
+        <span *ngSwitchCase="0">Status atual: Em andamento</span>
+        <span *ngSwitchCase="1">Status atual: Em transito</span>
+        <span *ngSwitchCase="2">Status atual: Finalizado</span>
     </div>
 </div>
 <br>

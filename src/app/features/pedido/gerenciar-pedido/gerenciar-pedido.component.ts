@@ -7,7 +7,7 @@ import { IPedido } from '../pedido.model';
 @Component({
   selector: 'app-gerenciar-pedido',
   templateUrl: './gerenciar-pedido.component.html',
-  styleUrls: ['./gerenciar-pedido.component.css']
+  styleUrls: ['./gerenciar-pedido.component.css'],
 })
 @Input()
 export class GerenciarPedidoComponent implements OnInit {
@@ -25,7 +25,9 @@ export class GerenciarPedidoComponent implements OnInit {
   }
 
   public alterarStatus(id: number) {
-    this.router.navigate(['/pedido/status', id]);
+    if (confirm(`Deseja alterar o status do pedido ${id}`)) {
+      this.router.navigate(['/pedido/status', id]);
+    }
   }
 
   public acompanhar(id: number) {
@@ -44,4 +46,3 @@ export class GerenciarPedidoComponent implements OnInit {
     location.reload();
   }
 }
-

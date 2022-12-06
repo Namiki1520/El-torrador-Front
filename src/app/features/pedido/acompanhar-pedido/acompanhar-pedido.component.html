@@ -14,7 +14,7 @@
                 <h2 *ngSwitchCase="2">Finalizado</h2>
             </div>
             <div class="progress mb-3" id="barra">
-                <div [ngClass]="{'andamento': emAndamento() === 0, 'transito' : emAndamento() === 1, 'finalizado' : emAndamento() === 2}"
+                <div [ngClass]="{'andamento': andamento() === 0, 'transito' : andamento() === 1, 'finalizado' : andamento() === 2}"
                     class="progress-bar" role="progressbar" aria-label="Basic example" aria-valuenow="0"
                     aria-valuemin="0" aria-valuemax="100"></div>
             </div>

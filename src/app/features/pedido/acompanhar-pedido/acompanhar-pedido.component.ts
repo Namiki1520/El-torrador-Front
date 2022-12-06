@@ -33,7 +33,7 @@ export class AcompanharPedidoComponent implements OnInit {
     
   }
 
-  public emAndamento(){
+  public andamento(){
     if (this.pedido.currentStatus === 0) {
       return 0
     }
