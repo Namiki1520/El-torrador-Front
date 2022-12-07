@@ -12,7 +12,7 @@ import { ICliente } from '../cliente.model';
 })
 export class NovoClienteComponent implements OnInit {
   public form!: FormGroup;
-
+  public dataAtual: Date = new Date();
   constructor(private service: ClienteService, private router: Router) {}
 
   ngOnInit(): void {

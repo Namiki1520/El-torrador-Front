@@ -12,6 +12,7 @@ import { IProduto } from '../produto.model';
 })
 export class NovoProdutoComponent implements OnInit {
   public form!: FormGroup;
+  public dataAtual:Date = new Date();
   constructor(private produtoService: ProdutoService, private router: Router) { }
 
   ngOnInit(): void {

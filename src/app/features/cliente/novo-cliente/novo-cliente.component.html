@@ -18,7 +18,7 @@
     <br>
     <div class="form-group">
         <label for="birthDate" class="form-label">Data de Nascimento</label>
-        <input id="birthDate" formControlName="birthDate" type="date" class="form-control" autocomplete="off" [ngClass]="{ 
+        <input id="birthDate" formControlName="birthDate" type="date" class="form-control" [max]="dataAtual|date: 'yyyy-MM-dd'" autocomplete="off" [ngClass]="{ 
             'valid':  form.get('birthDate')?.valid && !form.get('birthDate')?.pristine,
             'invalid': form.get('birthDate')?.invalid && !form.get('birthDate')?.pristine
            }">

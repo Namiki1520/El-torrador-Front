@@ -18,7 +18,7 @@
     <br>
     <div class="form-group">
         <label for="expirationDate" class="form-label">Data de Validade</label>
-        <input id="expirationDate" formControlName="expirationDate" type="date" class="form-control" autocomplete="off" [ngClass]="{ 
+        <input id="expirationDate" formControlName="expirationDate" type="date" class="form-control" [min]="dataAtual|date: 'yyyy-MM-dd'" autocomplete="off" [ngClass]="{ 
             'valid':  form.get('expirationDate')?.valid && !form.get('expirationDate')?.pristine,
             'invalid': form.get('expirationDate')?.invalid && !form.get('expirationDate')?.pristine
            }">
