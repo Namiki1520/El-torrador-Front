@@ -11,15 +11,16 @@
 </div>
 <br>
 <form [formGroup]="form" (ngSubmit)="salvar()">
-<div class="form-group">
-    <label for="quantityInStock" class="form-label">Quantidade Adicionada</label>
-    <input id="quantityInStock" formControlName="quantityInStock" type="text" class="form-control" autocomplete="off"
-        [ngClass]="{ 
+    <div class="form-group">
+        <label for="quantityInStock" class="form-label">Quantidade Adicionada</label>
+        <input id="quantityInStock" formControlName="quantityInStock" type="text" class="form-control"
+            autocomplete="off" [ngClass]="{ 
             'valid':  form.get('quantityInStock')?.valid && !form.get('quantityInStock')?.pristine,
             'invalid': form.get('quantityInStock')?.invalid && !form.get('quantityInStock')?.pristine
            }">
-</div>
-<br>
-<input type="submit" value="Salvar" class="btn btn-primary m-1" [disabled]="form.invalid" />    <br>
-<div class="alert alert-danger mt-1" *ngIf="form.invalid && !form.pristine">
-    <span *ngIf="form.get('quantityInStock')?.errors?.['required']">A quantidade é inválida!<br></span>
+    </div>
+    <br>
+    <input type="submit" value="Salvar" class="btn btn-primary m-1" [disabled]="form.invalid" /> <br>
+    <div class="alert alert-danger mt-1" *ngIf="form.invalid && !form.pristine">
+        <span *ngIf="form.get('quantityInStock')?.errors?.['required']">A quantidade é obrigatória!<br></span>
+        <span *ngIf="form.get('quantityInStock')?.errors?.['min']">A quantidade é inválida!<br></span>
