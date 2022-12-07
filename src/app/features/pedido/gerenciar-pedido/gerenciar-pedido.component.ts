@@ -41,7 +41,7 @@ export class GerenciarPedidoComponent implements OnInit {
               .deletarPedido(id)
               .pipe(take(1))
               .subscribe(() => {
-                alert(`O pedido ${id} foi ativado!`);
+                alert(`O pedido ${id} foi deletado!`);
                 location.reload();
               });
           }
