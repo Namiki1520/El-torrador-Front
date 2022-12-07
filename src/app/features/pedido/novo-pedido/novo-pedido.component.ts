@@ -22,9 +22,16 @@ export class NovoPedidoComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      customerCpf: new FormControl(null),
+      customerCpf: new FormControl(null, [
+        Validators.required,
+        Validators.pattern('[0-9]{11}'),
+      ]),
       product: new FormControl(null, [Validators.required]),
-      quantity: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(this.produto.quantityInStock)]),
+      quantity: new FormControl(null, [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(this.produto.quantityInStock),
+      ]),
     });
 
     this.produtoService
@@ -36,8 +43,8 @@ export class NovoPedidoComponent implements OnInit {
   }
 
   public salvar(): void {
-    this.produtos.forEach(element => {
-      if(element.id === this.form.get('product')?.value){
+    this.produtos.forEach((element) => {
+      if (element.id === this.form.get('product')?.value) {
         this.produto = element;
       }
     });

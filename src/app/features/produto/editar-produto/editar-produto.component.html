@@ -3,8 +3,8 @@
     <br>
     <div class="form-group">
         <label for="description" class="custom-label">Descrição</label>
-        <input type="text" class="form-control custom-input" formControlName="description" id="description" name="description"
-            [(ngModel)]="produto.description" autocomplete="off" required [ngClass]="{
+        <input type="text" class="form-control custom-input" formControlName="description" id="description"
+            name="description" [(ngModel)]="produto.description" autocomplete="off" required [ngClass]="{
             'valid': form.get('description')?.valid && !form.get('description')?.pristine,
             'invalid': form.get('description')?.invalid && !form.get('description')?.pristine}">
     </div>
@@ -26,9 +26,14 @@
     <br>
     <button class="btn btn-primary m-1" (click)="limpar()">Limpar</button>
     <input type="submit" value="Salvar" class="btn btn-primary m-1" [disabled]="form.invalid" />
-    <br>
     <div class="alert alert-danger mt-1" *ngIf="form.invalid && !form.pristine">
-        <span *ngIf="form.get('cpf')?.errors?.['required']">O cpf do cliente é obrigatório!<br></span>
-        <span *ngIf="form.get('cpf')?.errors?.['maxlength']">O cpf deve ter no máximo 11 digitos<br></span>
+        <span *ngIf="form.get('description')?.errors?.['required']">A descrição do produto é obrigatória!<br></span>
+        <span *ngIf="form.get('description')?.errors?.['minlength']">A descrição deve conter 3 caracteres!<br></span>
+
+        <span *ngIf="form.get('price')?.errors?.['required']">O preço do produto é obrigatório!<br></span>
+        <span *ngIf="form.get('price')?.errors?.['min']">O preço deve ser maior que zero!<br></span>
+
+        <span *ngIf="form.get('expirationDate')?.errors?.['required']">A data de validade é obrigatória!<br></span>
     </div>
+
 </form>

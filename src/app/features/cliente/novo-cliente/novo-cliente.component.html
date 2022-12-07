@@ -2,8 +2,8 @@
 <form [formGroup]="form" (ngSubmit)="salvar()">
     <br>
     <div class="form-group">
-        <label for="nome" class="form-label">Nome</label>
-        <input id="nome" formControlName="nome" type="text" class="form-control" autocomplete="off" [ngClass]="{
+        <label for="name" class="form-label">Nome</label>
+        <input id="name" formControlName="name" type="text" class="form-control" autocomplete="off" [ngClass]="{
          'valid': form.get('name')?.valid && !form.get('name')?.pristine,
          'invalid': form.get('name')?.invalid && !form.get('name')?.pristine}">
     </div>
@@ -17,18 +17,23 @@
     </div>
     <br>
     <div class="form-group">
-        <label for="dataNascimento" class="form-label">Data de Nascimento</label>
-        <input id="dataNascimento" formControlName="dataNascimento" type="date" class="form-control" autocomplete="off" [ngClass]="{ 
-            'valid':  form.get('dataNascimento')?.valid && !form.get('dataNascimento')?.pristine,
-            'invalid': form.get('dataNascimento')?.invalid && !form.get('dataNascimento')?.pristine
+        <label for="birthDate" class="form-label">Data de Nascimento</label>
+        <input id="birthDate" formControlName="birthDate" type="date" class="form-control" autocomplete="off" [ngClass]="{ 
+            'valid':  form.get('birthDate')?.valid && !form.get('birthDate')?.pristine,
+            'invalid': form.get('birthDate')?.invalid && !form.get('birthDate')?.pristine
            }">
     </div>
     <br>
     <button class="btn btn-primary" (click)="limpar()">Limpar</button>
-    <input type="submit" value="Salvar" class="btn btn-primary" [disabled]="form.invalid"/> 
+    <input type="submit" value="Salvar" class="btn btn-primary" [disabled]="form.invalid" />
     <br>
     <div class="alert alert-danger mt-1" *ngIf="form.invalid && !form.pristine">
+        <span *ngIf="form.get('name')?.errors?.['required']">O nome é obrigatório<br></span>
+        <span *ngIf="form.get('name')?.errors?.['minlength']">O nome deve conter três caracteres ou mais<br></span>
+
         <span *ngIf="form.get('cpf')?.errors?.['required']">O cpf do cliente é obrigatório!<br></span>
-        <span *ngIf="form.get('cpf')?.errors?.['maxlength']">O cpf deve ter no máximo 11 digitos<br></span>
-   </div>
+        <span *ngIf="form.get('cpf')?.errors?.['pattern']">O cpf deve conter 11 dígitos numéricos<br></span>
+
+        <span *ngIf="form.get('birthDate')?.errors?.['required']">A data de nascimento é obrigatória!<br></span>
+    </div>
 </form>

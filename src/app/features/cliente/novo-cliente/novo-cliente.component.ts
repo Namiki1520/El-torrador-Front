@@ -16,21 +16,24 @@ export class NovoClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      nome: new FormControl(null, [
+      name: new FormControl(null, [
         Validators.required,
         Validators.minLength(3),
       ]),
-      cpf: new FormControl(null, [Validators.required, Validators.min(11)]),
-      dataNascimento: new FormControl(null, [Validators.required]),
+      cpf: new FormControl(null, [
+        Validators.required,
+        Validators.pattern("[0-9]{11}")
+      ]),
+      birthDate: new FormControl(null, [Validators.required]),
     });
   }
   public salvar(): void {
     if (this.form.valid) {
       const novoCliente: ICliente = {
         id: 0,
-        name: this.form.get('nome')?.value,
+        name: this.form.get('name')?.value,
         cpf: this.form.get('cpf')?.value,
-        birthDate: this.form.get('dataNascimento')?.value,
+        birthDate: this.form.get('birthDate')?.value,
         fidelityPoints: 0,
       };
 

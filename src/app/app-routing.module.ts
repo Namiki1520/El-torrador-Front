@@ -1,9 +1,9 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { combineLatest } from 'rxjs';
 import { EditarClienteComponent } from './features/cliente/editar-cliente/editar-cliente.component';
 import { GerenciarClienteComponent } from './features/cliente/gerenciar-cliente/gerenciar-cliente.component';
 import { NovoClienteComponent } from './features/cliente/novo-cliente/novo-cliente.component';
+import { LandingPageComponent } from './features/landing/landing-page.component';
 import { AcompanharPedidoComponent } from './features/pedido/acompanhar-pedido/acompanhar-pedido.component';
 import { GerenciarPedidoComponent } from './features/pedido/gerenciar-pedido/gerenciar-pedido.component';
 import { NovoPedidoComponent } from './features/pedido/novo-pedido/novo-pedido.component';
@@ -19,63 +19,73 @@ const routes: Routes = [
     children: [
       {
         path: 'cadastrar',
-        component: NovoClienteComponent
+        component: NovoClienteComponent,
       },
       {
         path: 'gerenciar',
-        component: GerenciarClienteComponent
+        component: GerenciarClienteComponent,
       },
       {
         path: 'editar/:id',
-        component: EditarClienteComponent
-      }
-    ]
-},
-{
-  path: 'produto',
-  children: [
-    {
-      path: 'cadastrar',
-      component: NovoProdutoComponent
-    },
-    {
-      path: 'gerenciar',
-      component: GerenciarProdutoComponent
-    },
-    {
-      path: 'estoque/:id',
-      component: GerenciarEstoqueComponent
-    },
-    {
-      path: 'editar/:id',
-      component: EditarProdutoComponent
-    }
-  ]
-},
-{
-  path: 'pedido',
-  children:[
-    {
-      path: 'cadastrar',
-      component: NovoPedidoComponent
-    },
-    {
-      path: 'gerenciar',
-      component: GerenciarPedidoComponent
-    },
-    {
-      path: 'status/:id',
-      component: StatusPedidoComponent
-    },
-    {
-      path: 'acompanhar/:id',
-      component: AcompanharPedidoComponent
-    },
-  ]
-}];
+        component: EditarClienteComponent,
+      },
+    ],
+  },
+  {
+    path: 'produto',
+    children: [
+      {
+        path: 'cadastrar',
+        component: NovoProdutoComponent,
+      },
+      {
+        path: 'gerenciar',
+        component: GerenciarProdutoComponent,
+      },
+      {
+        path: 'estoque/:id',
+        component: GerenciarEstoqueComponent,
+      },
+      {
+        path: 'editar/:id',
+        component: EditarProdutoComponent,
+      },
+    ],
+  },
+  {
+    path: 'pedido',
+    children: [
+      {
+        path: 'cadastrar',
+        component: NovoPedidoComponent,
+      },
+      {
+        path: 'gerenciar',
+        component: GerenciarPedidoComponent,
+      },
+      {
+        path: 'status/:id',
+        component: StatusPedidoComponent,
+      },
+      {
+        path: 'acompanhar/:id',
+        component: AcompanharPedidoComponent,
+      },
+    ],
+  },
+  {
+    path: 'landing',
+    children: [
+      {
+        path: 'page',
+        component: LandingPageComponent,
+      },
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

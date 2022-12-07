@@ -22,4 +22,13 @@
     <button class="btn btn-danger" (click)="limpar()">Limpar</button>
     <input type="submit" value="Salvar" class="btn btn-primary"/>
     <br>
+    <div class="alert alert-danger mt-1" *ngIf="form.invalid && !form.pristine">
+        <span *ngIf="form.get('quantity')?.errors?.['required']">O nome é obrigatório!<br></span>
+        <span *ngIf="form.get('quantity')?.errors?.['min']">A quantidade deve ser maior que zero!<br></span>
+
+        <span *ngIf="form.get('customerCpf')?.errors?.['required']">O cpf do cliente é obrigatório!<br></span>
+        <span *ngIf="form.get('customerCpf')?.errors?.['pattern']">O cpf deve conter 11 dígitos numéricos<br></span>
+
+        <span *ngIf="form.get('product')?.errors?.['required']">Selecione um produto!<br></span>
+    </div>
 </form>

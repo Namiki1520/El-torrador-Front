@@ -15,18 +15,18 @@ export class NovoProdutoComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      descricao: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      preco: new FormControl(null, [Validators.required, Validators.min(1)]),
-      dataVencimento: new FormControl(null, [Validators.required])
+      description: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      price: new FormControl(null, [Validators.required, Validators.min(1)]),
+      expirationDate: new FormControl(null, [Validators.required])
     })
   }
   public salvar(){
     if(this.form.valid){
       const novoProduto: IProduto = {
         id:0,
-        description: this.form.get('descricao')?.value,
-        price: this.form.get('preco')?.value,
-        expirationDate: this.form.get('dataVencimento')?.value,
+        description: this.form.get('description')?.value,
+        price: this.form.get('price')?.value,
+        expirationDate: this.form.get('expirationDate')?.value,
         quantityInStock: 0,
         active: true
       }

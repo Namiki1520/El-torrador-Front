@@ -27,8 +27,14 @@
     <button class="btn btn-primary m-1" (click)="limpar()">Limpar</button>
     <input type="submit" value="Salvar" class="btn btn-primary m-1" [disabled]="form.invalid" />
     <br>
+    <br>
     <div class="alert alert-danger mt-1" *ngIf="form.invalid && !form.pristine">
+        <span *ngIf="form.get('name')?.errors?.['required']">O nome é obrigatório<br></span>
+        <span *ngIf="form.get('name')?.errors?.['minlength']">O nome deve conter três caracteres ou mais<br></span>
+
         <span *ngIf="form.get('cpf')?.errors?.['required']">O cpf do cliente é obrigatório!<br></span>
-        <span *ngIf="form.get('cpf')?.errors?.['maxlength']">O cpf deve ter no máximo 11 digitos<br></span>
+        <span *ngIf="form.get('cpf')?.errors?.['pattern']">O cpf deve conter 11 dígitos numéricos<br></span>
+
+        <span *ngIf="form.get('birthDate')?.errors?.['required']">A data de nascimento é obrigatória!<br></span>
     </div>
 </form>

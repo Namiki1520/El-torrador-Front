@@ -2,25 +2,25 @@
 <form [formGroup]="form" (ngSubmit)="salvar()">
     <br>
     <div class="form-group">
-        <label for="descricao" class="form-label">Descrição</label>
-        <input id="descricao" formControlName="descricao" type="text" class="form-control" autocomplete="off" [ngClass]="{
-         'valid': form.get('descricao')?.valid && !form.get('descricao')?.pristine,
-         'invalid': form.get('descricao')?.invalid && !form.get('descricao')?.pristine}">
+        <label for="description" class="form-label">Descrição</label>
+        <input id="description" formControlName="description" type="text" class="form-control" autocomplete="off" [ngClass]="{
+         'valid': form.get('description')?.valid && !form.get('description')?.pristine,
+         'invalid': form.get('description')?.invalid && !form.get('description')?.pristine}">
     </div>
     <br>
     <div class="form-group">
-        <label for="preco" class="form-label">Preço</label>
-        <input id="preco" formControlName="preco" type="text" class="form-control" autocomplete="off" [ngClass]="{ 
-            'valid':  form.get('preco')?.valid && !form.get('preco')?.pristine,
-            'invalid': form.get('preco')?.invalid && !form.get('preco')?.pristine
+        <label for="price" class="form-label">Preço</label>
+        <input id="price" formControlName="price" type="text" class="form-control" autocomplete="off" [ngClass]="{ 
+            'valid':  form.get('price')?.valid && !form.get('price')?.pristine,
+            'invalid': form.get('price')?.invalid && !form.get('price')?.pristine
            }">
     </div>
     <br>
     <div class="form-group">
-        <label for="dataValidade" class="form-label">Data de Validade</label>
-        <input id="dataValidade" formControlName="dataValidade" type="date" class="form-control" autocomplete="off" [ngClass]="{ 
-            'valid':  form.get('dataValidade')?.valid && !form.get('dataValidade')?.pristine,
-            'invalid': form.get('dataValidade')?.invalid && !form.get('dataValidade')?.pristine
+        <label for="expirationDate" class="form-label">Data de Validade</label>
+        <input id="expirationDate" formControlName="expirationDate" type="date" class="form-control" autocomplete="off" [ngClass]="{ 
+            'valid':  form.get('expirationDate')?.valid && !form.get('expirationDate')?.pristine,
+            'invalid': form.get('expirationDate')?.invalid && !form.get('expirationDate')?.pristine
            }">
     </div>
     <br>
@@ -28,7 +28,12 @@
     <input type="submit" value="Salvar" class="btn btn-primary" [disabled]="form.invalid"/> 
     <br>
     <div class="alert alert-danger mt-1" *ngIf="form.invalid && !form.pristine">
-        <span *ngIf="form.get('cpf')?.errors?.['required']">O cpf do cliente é obrigatório!<br></span>
-        <span *ngIf="form.get('cpf')?.errors?.['maxlength']">O cpf deve ter no máximo 11 digitos<br></span>
+        <span *ngIf="form.get('description')?.errors?.['required']">A descrição do produto é obrigatória!<br></span>
+        <span *ngIf="form.get('description')?.errors?.['minlength']">A descrição deve conter 3 caracteres!<br></span>
+
+        <span *ngIf="form.get('price')?.errors?.['required']">O preço do produto é obrigatório!<br></span>
+        <span *ngIf="form.get('price')?.errors?.['min']">O preço deve ser maior que zero!<br></span>
+
+        <span *ngIf="form.get('expirationDate')?.errors?.['required']">A data de validade é obrigatória!<br></span>
    </div>
 </form>

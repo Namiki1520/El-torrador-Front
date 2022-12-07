@@ -28,12 +28,14 @@ export class GerenciarClienteComponent implements OnInit {
   }
 
   public deletar(cpfCLiente: string) {
-    this.clienteService
-      .deleteCliente(cpfCLiente)
-      .pipe(take(1))
-      .subscribe(() => {
-        alert(`O cliente com CPF: ${cpfCLiente} foi deletado com sucesso!`);
-      });
-      location.reload();
+    if (confirm(`Deseja deletar o cliente com CPF ${cpfCLiente}`)) {
+      this.clienteService
+        .deleteCliente(cpfCLiente)
+        .pipe(take(1))
+        .subscribe(() => {
+          alert(`O cliente com CPF: ${cpfCLiente} foi deletado com sucesso!`);
+          location.reload();
+        });
+    }
   }
 }

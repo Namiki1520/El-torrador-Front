@@ -19,6 +19,7 @@ import { NovoPedidoComponent } from './features/pedido/novo-pedido/novo-pedido.c
 import { PedidoService } from './features/pedido.service';
 import { StatusPedidoComponent } from './features/pedido/status-pedido/status-pedido.component';
 import { AcompanharPedidoComponent } from './features/pedido/acompanhar-pedido/acompanhar-pedido.component';
+import { LandingPageComponent } from './features/landing/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AcompanharPedidoComponent } from './features/pedido/acompanhar-pedido/a
     NovoPedidoComponent,
     StatusPedidoComponent,
     AcompanharPedidoComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,

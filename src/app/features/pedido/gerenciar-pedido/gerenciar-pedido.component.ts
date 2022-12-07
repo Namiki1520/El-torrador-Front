@@ -25,9 +25,7 @@ export class GerenciarPedidoComponent implements OnInit {
   }
 
   public alterarStatus(id: number) {
-    if (confirm(`Deseja alterar o status do pedido ${id}`)) {
-      this.router.navigate(['/pedido/status', id]);
-    }
+    this.router.navigate(['/pedido/status', id]);
   }
 
   public acompanhar(id: number) {
