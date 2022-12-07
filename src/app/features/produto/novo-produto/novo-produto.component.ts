@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { ProdutoService } from '../../produto.service';
 import { IProduto } from '../produto.model';
@@ -11,15 +12,16 @@ import { IProduto } from '../produto.model';
 })
 export class NovoProdutoComponent implements OnInit {
   public form!: FormGroup;
-  constructor(private produtoService: ProdutoService) { }
+  constructor(private produtoService: ProdutoService, private router: Router) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
       description: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      price: new FormControl(null, [Validators.required, Validators.min(1)]),
+      price: new FormControl(null, [Validators.required, Validators.min(1), Validators.pattern("[0-9]{11}")]),
       expirationDate: new FormControl(null, [Validators.required])
-    })
-  }
+    });
+  };
+
   public salvar(){
     if(this.form.valid){
       const novoProduto: IProduto = {
@@ -29,15 +31,17 @@ export class NovoProdutoComponent implements OnInit {
         expirationDate: this.form.get('expirationDate')?.value,
         quantityInStock: 0,
         active: true
-      }
+      };
+      
       this.produtoService.cadastrarProduto(novoProduto)
       .pipe(take(1)).subscribe(() => {
         alert('Produto cadastrado com sucesso!')
-      })
-    }
+        this.router.navigate(['/produto/gerenciar']);
+      });
+    };
   };
 
   public limpar(){
     this.form.reset();
-  }
+  };
 }

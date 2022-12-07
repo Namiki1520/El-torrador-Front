@@ -33,6 +33,7 @@
 
         <span *ngIf="form.get('price')?.errors?.['required']">O preço do produto é obrigatório!<br></span>
         <span *ngIf="form.get('price')?.errors?.['min']">O preço deve ser maior que zero!<br></span>
+        <span *ngIf="form.get('price')?.errors?.['pattern']">O preço deve ser um número!<br></span>
 
         <span *ngIf="form.get('expirationDate')?.errors?.['required']">A data de validade é obrigatória!<br></span>
    </div>

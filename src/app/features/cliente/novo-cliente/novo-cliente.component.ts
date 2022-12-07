@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { ClienteService } from '../../cliente.service';
 import { ICliente } from '../cliente.model';
@@ -12,7 +13,7 @@ import { ICliente } from '../cliente.model';
 export class NovoClienteComponent implements OnInit {
   public form!: FormGroup;
 
-  constructor(private service: ClienteService) {}
+  constructor(private service: ClienteService, private router: Router) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -42,6 +43,7 @@ export class NovoClienteComponent implements OnInit {
         .pipe(take(1))
         .subscribe(() => {
           alert('Cliente cadastrado com sucesso!');
+          this.router.navigate(['/cliente/gerenciar']);
         });
     }
   }

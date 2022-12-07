@@ -33,14 +33,23 @@ export class GerenciarPedidoComponent implements OnInit {
   }
 
   public deletar(id: number) {
-    if (confirm(`Você deseja deletar o pedido ${id}?`)) {
-      this.pedidoService
-        .deletarPedido(id)
-        .pipe(take(1))
-        .subscribe(() => {
-          alert(`O pedido ${id} foi ativado!`);
-        });
-    }
-    location.reload();
+    this.pedidos.forEach((element) => {
+      if (element.id == id) {
+        if (element.currentStatus != 2) {
+          if (confirm(`Você deseja deletar o pedido ${id}?`)) {
+            this.pedidoService
+              .deletarPedido(id)
+              .pipe(take(1))
+              .subscribe(() => {
+                alert(`O pedido ${id} foi ativado!`);
+                location.reload();
+              });
+          }
+        } else {
+          alert('Pedidos Finalizados não podem ser alterados ou excluídos!');
+          location.reload();
+        }
+      }
+    });
   }
 }

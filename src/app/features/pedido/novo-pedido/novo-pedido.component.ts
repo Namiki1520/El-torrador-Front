@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import { take } from 'rxjs';
 import { PedidoService } from '../../pedido.service';
 import { ProdutoService } from '../../produto.service';
@@ -17,13 +18,13 @@ export class NovoPedidoComponent implements OnInit {
   public produto: IProduto = {} as IProduto;
   constructor(
     private pedidoService: PedidoService,
-    private produtoService: ProdutoService
+    private produtoService: ProdutoService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
       customerCpf: new FormControl(null, [
-        Validators.required,
         Validators.pattern('[0-9]{11}'),
       ]),
       product: new FormControl(null, [Validators.required]),
@@ -65,6 +66,7 @@ export class NovoPedidoComponent implements OnInit {
       .pipe(take(1))
       .subscribe(() => {
         alert('Pedido cadastrado com sucesso!');
+        this.router.navigate(['/pedido/gerenciar']);
       });
   }
 

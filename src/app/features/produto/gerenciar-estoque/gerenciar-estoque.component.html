@@ -24,3 +24,4 @@
     <div class="alert alert-danger mt-1" *ngIf="form.invalid && !form.pristine">
         <span *ngIf="form.get('quantityInStock')?.errors?.['required']">A quantidade é obrigatória!<br></span>
         <span *ngIf="form.get('quantityInStock')?.errors?.['min']">A quantidade é inválida!<br></span>
+        <span *ngIf="form.get('quantityInStock')?.errors?.['pattern']">Sómente a quantidade!<br></span>

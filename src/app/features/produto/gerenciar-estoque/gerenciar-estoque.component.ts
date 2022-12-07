@@ -25,6 +25,7 @@ export class GerenciarEstoqueComponent implements OnInit {
       quantityInStock: new FormControl(null, [
         Validators.required,
         Validators.min(1),
+        Validators.pattern("[0-9]{11}")
       ]),
     });
 

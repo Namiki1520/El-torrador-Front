@@ -48,12 +48,19 @@ export class StatusPedidoComponent implements OnInit {
       requestDate: this.pedido.requestDate,
       currentStatus: this.form.get('currentStatus')?.value,
     };
-    this.pedidoService
+    if(this.pedido.currentStatus != 2)
+    {
+      this.pedidoService
       .alterarStatus(pedido)
       .pipe(take(1))
       .subscribe(() => {
         alert('O status foi alterado!');
         this.router.navigate(['/pedido/gerenciar']);
       });
+    }else{
+      alert('Pedidos Finalizados não podem ser alterados ou excluídos!');
+        this.router.navigate(['/pedido/gerenciar']);
+    }
+    
   }
 }
