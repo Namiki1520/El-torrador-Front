@@ -29,9 +29,6 @@
         <span *ngIf="form.get('quantity')?.errors?.['max']">
             A quantidade não pode ser maior que a quantidade de produtos em estoque!<br>
         </span>
-        <span *ngIf="form.get('quantity')?.errors?.['max']">
-            A quantidade deve ser numérica!<br>
-        </span>
 
         <span *ngIf="form.get('product')?.errors?.['required']">Selecione um produto!<br></span>
     </div>

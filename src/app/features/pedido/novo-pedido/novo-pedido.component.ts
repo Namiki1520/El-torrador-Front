@@ -24,9 +24,7 @@ export class NovoPedidoComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      customerCpf: new FormControl(null, [
-        Validators.pattern('[0-9]{11}'),
-      ]),
+      customerCpf: new FormControl(null, [Validators.pattern('[0-9]{11}')]),
       product: new FormControl(null, [Validators.required]),
       quantity: new FormControl(null, [
         Validators.required,
@@ -60,14 +58,20 @@ export class NovoPedidoComponent implements OnInit {
       currentStatus: 0,
     };
 
-    console.log(novoPedido);
-    this.pedidoService
-      .cadastrarPedido(novoPedido)
-      .pipe(take(1))
-      .subscribe(() => {
-        alert('Pedido cadastrado com sucesso!');
-        this.router.navigate(['/pedido/gerenciar']);
-      });
+    if (novoPedido.quantity < this.produto.quantityInStock) {
+      this.pedidoService
+        .cadastrarPedido(novoPedido)
+        .pipe(take(1))
+        .subscribe(() => {
+          alert('Pedido cadastrado com sucesso!');
+          this.router.navigate(['/pedido/gerenciar']);
+        });
+    } else {
+      alert(
+        'A quantidade de produtos do pedido não pode ser maior que a quantidade em estoque!'
+      );
+      location.reload();
+    }
   }
 
   public limpar() {

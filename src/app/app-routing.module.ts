@@ -74,13 +74,8 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'landing',
-    children: [
-      {
-        path: 'page',
-        component: LandingPageComponent,
-      },
-    ],
+    path: '',
+    component: LandingPageComponent,
   },
 ];
 
